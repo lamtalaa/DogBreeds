@@ -12,7 +12,8 @@ struct DogBreedsApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            DogBreedsListView()
+//            DogBreedsListView()
+            DogNamesList()
         }
     }
 }
