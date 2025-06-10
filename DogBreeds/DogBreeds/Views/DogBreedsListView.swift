@@ -12,13 +12,15 @@ struct DogBreedsListView: View {
     
     @StateObject private var viewModel = DogBreedImgViewModel()
 
+    let dog_breed: String
+    
     var body: some View {
         
         NavigationStack {
             List(viewModel.breeds_image, id: \.self) { image in
                 HStack {
+                    Spacer() // Push image to center
                     AsyncImage(url: URL(string: image.url)) { phase in
-                        Text(image.url) // debug
                         switch phase {
                         case .empty:
                             ProgressView()
@@ -27,7 +29,7 @@ struct DogBreedsListView: View {
                             img
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
-                                .frame(width: 80, height: 80)
+                                .frame(width: 200, height: 200)
                                 .clipped()
                                 .cornerRadius(8)
                         case .failure(_):
@@ -40,16 +42,15 @@ struct DogBreedsListView: View {
                             EmptyView()
                         }
                     }
+                    Spacer()
                 }
                 .padding(.vertical, 5)
             }
             .navigationTitle("Dog Breeds")
         }.onAppear {
-            viewModel.fetchImages(breed: "Boxer")
+            viewModel.fetchImages(breed: dog_breed)
         }
     }
 }
 
-#Preview {
-    DogBreedsListView()
-}
+

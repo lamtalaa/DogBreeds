@@ -13,7 +13,7 @@ struct DogNamesList: View {
     var body: some View {
         NavigationStack {
             List(viewModel.breeds) { breed in
-               // NavigationLink(destination: DogBreedDetailView(breed: breed)) {
+                NavigationLink(destination: DogBreedsListView(dog_breed: breed.breed)) {
                     VStack(alignment: .leading) {
                         Text(breed.breed.capitalized)
                             .font(.headline)
@@ -32,11 +32,9 @@ struct DogNamesList: View {
                 await viewModel.fetchBreeds()
             }
         }
-    //}
+    }
 }
 
 // TEST Cmment
 
-#Preview {
-    DogNamesList()
-}
+
