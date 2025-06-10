@@ -11,15 +11,15 @@ import SwiftUI
 struct DogBreedsListView: View {
     
     @StateObject private var viewModel = DogBreedImgViewModel()
-
+    @State private var showAllImages = false
+    
     let dog_breed: String
     
     var body: some View {
-        
         NavigationStack {
-            List(viewModel.breeds_image, id: \.self) { image in
+            List(displayedImages, id: \.self) { image in
                 HStack {
-                    Spacer() // Push image to center
+                    Spacer()
                     AsyncImage(url: URL(string: image.url)) { phase in
                         switch phase {
                         case .empty:
@@ -47,10 +47,23 @@ struct DogBreedsListView: View {
                 .padding(.vertical, 5)
             }
             .navigationTitle("Dog Breeds")
-        }.onAppear {
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    if !showAllImages && viewModel.breeds_image.count > 3 {
+                        Button("View More") {
+                            showAllImages = true
+                        }
+                    }
+                }
+            }
+        }
+        .onAppear {
             viewModel.fetchImages(breed: dog_breed)
         }
     }
+
+    /// Only show first 3 unless toggled
+    private var displayedImages: [DogImage] {
+        showAllImages ? viewModel.breeds_image : Array(viewModel.breeds_image.prefix(3))
+    }
 }
-
-
