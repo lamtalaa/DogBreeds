@@ -1,0 +1,31 @@
+Team :  Yessine, Hasan,  Amruth
+
+Responsibility 
+
+Lead : Yessine 
+
+Sr iOS developer :  Hasan,  Amruth
+
+
+https://dog.ceo/api/breeds/list/all
+https://dog.ceo/api/breed/bulldog/images
+
+
+
+Create two screen , as shared in screen shot, first screen will display list of breeds
+On click for breed it will naviaged to details screen where it will get all list of images URL and only display first 3 images and on click of viewMore all images will be displayed
+Use MVVM architecture
+Write test cases
+Cache images , Images should be downloaded once only,  next time it should read from cahce
+
+
+
+
+Codng Hygiene 
+
+Ensure code is commits to git and multiple commits by each developer (don’t push in single commit)
+Create task and divide b/w each other
+Create branch for each task and follow PR process
+Follow swift lint guidelines
+Coding best practices
+Use swiftUI , async await
