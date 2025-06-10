@@ -28,7 +28,6 @@ class DogBreedImgViewModel: ObservableObject {
             }
         }
     }
-
         
     init() {
         loadMockData()

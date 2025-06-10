@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DogBreed: Decodable {
+struct DogBreedImgModel: Decodable {
     let message: [String]
 }
 

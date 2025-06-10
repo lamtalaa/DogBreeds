@@ -13,7 +13,7 @@ class MockNetworkLayer {
             throw URLError(.badURL)
         }
         let (data, _) = try await URLSession.shared.data(from: url)
-        let decoded = try JSONDecoder().decode(DogBreed.self, from: data)
+        let decoded = try JSONDecoder().decode(DogBreedImgModel.self, from: data)
 
         decoded.message.forEach { print($0) }   // debugging
         
