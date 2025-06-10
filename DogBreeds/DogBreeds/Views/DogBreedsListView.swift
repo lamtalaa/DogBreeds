@@ -46,7 +46,7 @@ struct DogBreedsListView: View {
                 }
                 .padding(.vertical, 5)
             }
-            .navigationTitle("Dog Breeds")
+            .navigationTitle(dog_breed)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     if !showAllImages && viewModel.breeds_image.count > 3 {
@@ -66,4 +66,9 @@ struct DogBreedsListView: View {
     private var displayedImages: [DogImage] {
         showAllImages ? viewModel.breeds_image : Array(viewModel.breeds_image.prefix(3))
     }
+}
+
+
+#Preview {
+    DogBreedsListView(dog_breed: "labrador")
 }
