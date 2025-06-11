@@ -11,10 +11,9 @@ import Combine
 class DogBreedImgViewModel: ObservableObject {
     
     @Published var breeds_image: [DogImage] = []
-//    Uncomment
+    
     let networkManager = DogNetworkManager.shared
     
-//    let networkManager = MockNetworkLayer()
     func fetchImages(breed: String) {
         Task {
             do {
