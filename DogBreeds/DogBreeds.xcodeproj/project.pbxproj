@@ -9,7 +9,10 @@
 /* Begin PBXBuildFile section */
 		0056BC3B2DFB035900F3220E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 0056BC3A2DFB035400F3220E /* .swiftlint.yml */; };
 		00DC27212DFA210A0028075C /* File.txt in Resources */ = {isa = PBXBuildFile; fileRef = 00DC27202DFA210A0028075C /* File.txt */; };
+<<<<<<< HEAD
 		8C39347A2DFA890100812417 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8C3934792DFA890100812417 /* Kingfisher */; };
+=======
+>>>>>>> edadf07 (before pull)
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,7 +213,10 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				00DC271F2DFA173E0028075C /* XCRemoteSwiftPackageReference "SwiftLint" */,
+<<<<<<< HEAD
 				8C3934782DFA890100812417 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+=======
+>>>>>>> edadf07 (before pull)
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8C3933B72DF8647F00812417 /* Products */;
@@ -601,6 +607,7 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+<<<<<<< HEAD
 		8C3934782DFA890100812417 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
@@ -618,6 +625,8 @@
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
+=======
+>>>>>>> edadf07 (before pull)
 	};
 	rootObject = 8C3933AE2DF8647F00812417 /* Project object */;
 }
