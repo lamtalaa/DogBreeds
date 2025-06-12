@@ -11,13 +11,14 @@ class DogNetworkManager {
     static let shared = DogNetworkManager()
     private init() {}
 
-//    private var breedsCache: [DogBreed]?
-//    private var imagesCache: [String: [DogImage]] = [:]
+    private var breedsCache: [DogBreed]?
+    private var imagesCache: [String: [DogImage]] = [:]
 
     func fetchBreeds() async throws -> [DogBreed] {
-//        if let cachedBreeds = breedsCache {
-//            return cachedBreeds
-//        }
+        if let cachedBreeds = breedsCache {
+            print("Returning cached breeds: \(cachedBreeds.count) breeds")
+            return cachedBreeds
+        }
 
         guard let url = URL(string: "https://dog.ceo/api/breeds/list/all") else {
             throw URLError(.badURL)
@@ -30,14 +31,15 @@ class DogNetworkManager {
             DogBreed(breed: breed, subBreeds: subBreeds)
         }.sorted { $0.breed < $1.breed }
 
-//        breedsCache = breeds
+        breedsCache = breeds
         return breeds
     }
 
     func fetchDogImages(breed: String) async throws -> [DogImage] {
-//        if let cachedImages = imagesCache[breed] {
-//            return cachedImages
-//        }
+        if let cachedImages = imagesCache[breed] {
+            print("Returning cached images for breed: \(breed)")
+            return cachedImages
+        }
 
         guard let url = URL(string: "https://dog.ceo/api/breed/\(breed)/images") else {
             throw URLError(.badURL)
@@ -47,7 +49,7 @@ class DogNetworkManager {
         let decoded = try JSONDecoder().decode(DogBreedImgModel.self, from: data)
 
         let images = decoded.message.map { DogImage(url: $0) }
-//        imagesCache[breed] = images
+        imagesCache[breed] = images
 
         return images
     }
