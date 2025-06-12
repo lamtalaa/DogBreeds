@@ -1,0 +1,21 @@
+//
+//  .swiftlint.yml
+//  DogBreeds
+//
+//  Created by Hasan Zaidi on 6/12/25.
+//
+
+
+disabled_rules:
+  - force_cast
+  - line_length
+
+opt_in_rules:
+  - empty_count
+
+included:
+  - DogBreeds
+
+excluded:
+  - Pods
+  - build
