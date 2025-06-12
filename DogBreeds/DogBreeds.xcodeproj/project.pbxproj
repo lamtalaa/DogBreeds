@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8C3934342DFA76F400812417 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8C3934332DFA76F400812417 /* Kingfisher */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		8C3933C42DF8648000812417 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C3934342DFA76F400812417 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = DogBreeds;
 			packageProductDependencies = (
+				8C3934332DFA76F400812417 /* Kingfisher */,
 			);
 			productName = DogBreeds;
 			productReference = 8C3933B62DF8647F00812417 /* DogBreeds.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = 8C3933AD2DF8647F00812417;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				8C3934322DFA76F400812417 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8C3933B72DF8647F00812417 /* Products */;
 			projectDirPath = "";
@@ -550,6 +559,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8C3934322DFA76F400812417 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.3.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8C3934332DFA76F400812417 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C3934322DFA76F400812417 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8C3933AE2DF8647F00812417 /* Project object */;
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Kingfisher
 
 struct DogBreedsListView: View {
     
@@ -20,28 +21,16 @@ struct DogBreedsListView: View {
             List(displayedImages, id: \.self) { image in
                 HStack {
                     Spacer()
-                    AsyncImage(url: URL(string: image.url)) { phase in
-                        switch phase {
-                        case .empty:
+                    KFImage(URL(string: image.url))
+                        .placeholder {
                             ProgressView()
                                 .frame(width: 80, height: 80)
-                        case .success(let img):
-                            img
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 200, height: 200)
-                                .clipped()
-                                .cornerRadius(8)
-                        case .failure(_):
-                            Image(systemName: "photo")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 80, height: 80)
-                                .foregroundColor(.gray)
-                        @unknown default:
-                            EmptyView()
                         }
-                    }
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 200, height: 200)
+                        .clipped()
+                        .cornerRadius(8)
                     Spacer()
                 }
                 .padding(.vertical, 5)
@@ -57,7 +46,7 @@ struct DogBreedsListView: View {
                 }
             }
         }
-        .onAppear {
+        .task {
             viewModel.fetchImages(breed: dog_breed)
         }
     }
