@@ -7,16 +7,20 @@
 
 import Foundation
 
-class DogNetworkManager {
-    static let shared = DogNetworkManager()
-    private init() {}
+protocol DogNetworkManagerProtocol {
+    func fetchBreeds() async throws -> [DogBreed]
+    func fetchDogImages(breed: String) async throws -> [DogImage]
+}
+
+class DogNetworkManager: DogNetworkManagerProtocol {
 
     private var breedsCache: [DogBreed]?
     private var imagesCache: [String: [DogImage]] = [:]
+    
+    init() {}
 
     func fetchBreeds() async throws -> [DogBreed] {
         if let cachedBreeds = breedsCache {
-            print("Returning cached breeds: \(cachedBreeds.count) breeds")
             return cachedBreeds
         }
 
@@ -37,7 +41,6 @@ class DogNetworkManager {
 
     func fetchDogImages(breed: String) async throws -> [DogImage] {
         if let cachedImages = imagesCache[breed] {
-            print("Returning cached images for breed: \(breed)")
             return cachedImages
         }
 

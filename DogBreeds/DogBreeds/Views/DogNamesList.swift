@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct DogNamesList: View {
-    @StateObject private var viewModel = DogBreedsViewModel()
+    @StateObject private var viewModel: DogBreedsViewModel
+
+    init(networkManager: DogNetworkManagerProtocol) {
+        _viewModel = StateObject(wrappedValue: DogBreedsViewModel(networkManager: networkManager))
+    }
 
     var body: some View {
         NavigationStack {
             List(viewModel.breeds) { breed in
-                NavigationLink(destination: DogBreedsListView(dog_breed: breed.breed)) {
+                NavigationLink(destination: makeBreedView(for: breed)) {
                     VStack(alignment: .leading) {
                         Text(breed.breed.capitalized)
                             .font(.headline)
@@ -33,8 +37,9 @@ struct DogNamesList: View {
             }
         }
     }
+
+    private func makeBreedView(for breed: DogBreed) -> some View {
+        let imgViewModel = DogBreedImgViewModel(networkManager: viewModel.networkManager)
+        return DogBreedsListView(dog_breed: breed.breed, viewModel: imgViewModel)
+    }
 }
-
-// TEST Cmment
-
-

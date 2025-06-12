@@ -11,7 +11,8 @@ import SwiftUI
 struct DogBreedsApp: App {
     var body: some Scene {
         WindowGroup {
-            DogNamesList()
+            let networkManager = DogNetworkManager()
+            DogNamesList(networkManager: networkManager)
         }
     }
 }
