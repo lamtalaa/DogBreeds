@@ -5,17 +5,20 @@
 //  Created by Hasan Zaidi on 6/10/25.
 //
 
-import Foundation
 import SwiftUI
 import Kingfisher
 
 struct DogBreedsListView: View {
     
-    @StateObject private var viewModel = DogBreedImgViewModel()
+    @StateObject private var viewModel: DogBreedImgViewModel
     @State private var showAllImages = false
-    
     let dog_breed: String
-    
+
+    init(dog_breed: String, viewModel: DogBreedImgViewModel) {
+        self.dog_breed = dog_breed
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
+
     var body: some View {
         NavigationStack {
             List(displayedImages, id: \.self) { image in
@@ -47,11 +50,10 @@ struct DogBreedsListView: View {
             }
         }
         .task {
-            viewModel.fetchImages(breed: dog_breed)
+            await viewModel.fetchImages(breed: dog_breed)
         }
     }
 
-    /// Only show first 3 unless toggled
     private var displayedImages: [DogImage] {
         showAllImages ? viewModel.breeds_image : Array(viewModel.breeds_image.prefix(3))
     }
